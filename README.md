@@ -1,14 +1,14 @@
-#Chat com personalidades históricas
+Chat com personalidades históricas
 Este é um projeto de chat que permite conversar com personalidades históricas famosas. Você pode selecionar a personalidade com quem gostaria de conversar e enviar mensagens. A personalidade selecionada responderá com citações famosas que combinam com a sua mensagem.
 
-##Como usar
+Como usar
 Clone este repositório em sua máquina local.
 Abra o arquivo index.html em seu navegador.
 Selecione a personalidade com quem gostaria de conversar no menu suspenso.
 Escreva sua mensagem na caixa de texto na parte inferior da tela e clique em "Enviar".
 A personalidade escolhida responderá com uma citação famosa que combine com a sua mensagem.
 
-###Personalidades disponíveis
+Personalidades disponíveis
 Albert Einstein
 Alexandre, o Grande
 Aristóteles
@@ -59,12 +59,12 @@ Van Gogh
 Vincente de Paulo
 Winston Churchill
 
-#Tecnologias utilizadas
+Tecnologias utilizadas
 HTML
 CSS
 JavaScript
 
-#Contribuindo
+Contribuindo
 Este é um projeto aberto e aceitamos contribuições da comunidade. Se quiser contribuir, siga os passos abaixo:
 
 Fork este repositório.
@@ -73,5 +73,5 @@ Faça as mudanças necessárias e commit (git commit -am "Adicionando nova funci
 Envie as mudanças para o seu branch (git push origin feature/nova-funcionalidade).
 Abra um Pull Request.
 
-#Licença
+Licença
 Este projeto está licenciado sob a licença MIT. Veja o arquivo LICENSE para mais informações.
