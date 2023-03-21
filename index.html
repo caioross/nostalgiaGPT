@@ -1,0 +1,376 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Caio Ross</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.min.css'>
+    <link href="brusher-demo.min.css" rel="stylesheet">
+  </head>
+  <style>
+    body .messages-content .message.typing span,
+    body .messages-content .message.typing::after,
+    body .chat,
+    body .action-box::after,
+    body .chat-title::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    }
+    .mCSB_container,
+	{
+		margin: 0 !important;
+    }
+    .mCSB_scrollTools {
+		margin-right: -3px;
+    }
+    @keyframes ball {
+		0% { margin-top: 0; }
+		20% { margin-top: 3px; }
+		80% { margin-top: -5px; }
+    }
+    @keyframes pop {
+		0% { transform: scale(0.6); }
+		30% { transform: scale(1.1); }
+		60% { transform: scale(0.9); }
+		100% { transform: scale(1); }
+    }
+    body,
+    html {
+		margin: 0;
+		height: 100%;
+		width: 100%;
+		outline: none;
+    }
+    body{
+		font-family:"Microsoft JhengHei",Arial,sans-serif;background:url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");letter-spacing:1px}.chat{width:80vh;height:80vh;max-height:500px;border-radius:15px;background-color:rgba(0,0,0,0.9);overflow:hidden}.chat-title{background-color:rgba(0,0,0,0.3);width:100%;height:50px}.chat-title h2{margin:10px 0;padding:0;color:#f0f0f0;font-weight:normal;font-size:16px;display:inline-block;line-height:30px}.chat-title .avatar{float:left;margin:10px;padding:0;width:30px;height:30px}.chat-title .avatar img{border-radius:50%;width:30px;height:30px}.messages{width:100%;height:calc(100% - 90px)}.messages-content{width:100%;height:100%;overflow-y:auto;box-sizing:border-box}.messages-content .message{max-width:calc(100% - 76px);padding:8px;margin:8px 0 8px 12px;border-radius:5px;background-color:rgba(170,187,204,0.1);color:#e3e3e3;float:left;font-size:13px;position:relative;word-break:break-all;clear:both;animation:pop .3s forwards
+	}
+    body .messages-content .message .timestamp {
+    position: absolute;
+    right: -40px;
+    bottom: 0;
+    font-size: 12px;
+    color: #bababa;
+    }
+    body .messages-content .message.personal {
+		float: right;
+		margin: 8px 12px 8px 0;
+    }
+    body .messages-content .message.personal .timestamp {
+		right: auto;
+		left: -40px;
+    }
+    body .messages-content .message.typing {
+		width: 30px;
+		height: 16px;
+    }
+    body .messages-content .message.typing::after {
+		content: "";
+		border-radius: 50%;
+		width: 3px;
+		height: 3px;
+		background-color: white;
+		transform: translate(-50%, -50%);
+		animation: ball 1.2s infinite linear;
+    }
+    body .messages-content .message.typing span {
+		width: 3px;
+		height: 3px;
+		transform: translate(-50%, -50%);
+    }
+    body .messages-content .message.typing span::before, body .messages-content .message.typing span::after {
+		content: "";
+		border-radius: 50%;
+		width: 3px;
+		height: 3px;
+		position: absolute;
+		background-color: white;
+		animation: ball 1.2s infinite linear;
+    }
+    body .messages-content .message.typing span::before {
+		left: 8px;
+		animation-delay: 0.3s;
+    }
+    body .messages-content .message.typing span::after {
+		right: 8px;
+		animation-delay: -0.3s;
+    }
+    body .action-box {
+		background-color: rgba(0, 0, 0, 0.3);
+		width: 100%;
+		height: 40px;
+    }
+    body .action-box-input, body .action-box-submit {
+		box-sizing: border-box;
+		border: 0;
+		float: left;
+    }
+    body .action-box-input {
+		width: calc(100% - 60px);
+		height: 20px;
+		background-color: transparent;
+		resize: none;
+		color: white;
+		margin: 10px 0;
+		padding: 0 10px;
+		line-height: 20px;
+		font-size: 16px;
+		letter-spacing: 1px;
+		overflow: hidden;
+    }
+    body .action-box-input::-webkit-input-placeholder {
+		line-height: 20px;
+		font-size: 13px;
+    }
+    body .action-box-submit {
+		width: 60px;
+		height: 40px;
+		background-color: rgba(189, 195, 199, 0.2);
+		color: white;
+		cursor: pointer;
+    }
+	
+	textarea#story {
+  // other stuff
+  -moz-appearance:none;
+  outline:0px none transparent;
+}
+
+textarea:focus, input:focus{
+    outline: 0;
+}
+
+*:focus {
+    outline: 0;
+}
+
+:root {
+  --background-gradient: linear-gradient(30deg, #f39c12 30%, #f1c40f);
+  --gray: #34495e;
+  --darkgray: #2c3e50;
+}
+
+select {
+  appearance: none;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  /* Personalize */
+  flex: 1;
+  padding: 0 1em;
+  color: #fff;
+  background-color: var(--darkgray);
+  background-image: none;
+  cursor: pointer;
+}
+select::-ms-expand {
+  display: none;
+}
+.select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  border-radius: .25em;
+  overflow: hidden;
+}
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: #34495e;
+  transition: .25s all ease;
+  pointer-events: none;
+}
+.select:hover::after {
+  color: #f39c12;
+}
+
+  </style>
+  <body class="homepage">
+    <script type="text/javascript" src="brusher-demo.min.js"></script>
+    <div class="chat">
+      <div class="chat-title">
+        
+		
+		
+  <select class="person">
+<option value="Albert Einstein">Albert Einstein</option>
+<option value="Alexandre, o Grande">Alexandre, o Grande</option>
+<option value="Aristóteles">Aristóteles</option>
+<option value="Ayrton Senna">Ayrton Senna</option>
+<option value="Beethoven">Beethoven</option>
+<option value="Buda">Buda</option>
+<option value="Charles Darwin">Charles Darwin</option>
+<option value="Che Guevara">Che Guevara</option>
+<option value="Cândido Rondon">Cândido Rondon</option>
+<option value="Cleópatra">Cleópatra</option>
+<option value="Claudio Coutinho">Claudio Coutinho</option>
+<option value="Confúcio">Confúcio</option>
+<option value="Dom Pedro II">Dom Pedro II</option>
+<option value="Edgar Allan Poe">Edgar Allan Poe</option>
+<option value="Eleanor Roosevelt">Eleanor Roosevelt</option>
+<option value="Elis Regina">Elis Regina</option>
+<option value="Elvis Presley">Elvis Presley</option>
+<option value="Ernest Hemingway">Ernest Hemingway</option>
+<option value="Galileu Galilei">Galileu Galilei</option>
+<option value="Gandhi">Gandhi</option>
+<option value="George Washington">George Washington</option>
+<option value="Getúlio Vargas">Getúlio Vargas</option>
+<option value="Heitor Villa-Lobos">Heitor Villa-Lobos</option>
+<option value="Isaac Newton">Isaac Newton</option>
+<option value="Jane Austen">Jane Austen</option>
+<option value="Jesus Cristo">Jesus Cristo</option>
+<option value="Johann Sebastian Bach">Johann Sebastian Bach</option>
+<option value="John F. Kennedy">John F. Kennedy</option>
+<option value="Leonardo da Vinci">Leonardo da Vinci</option>
+<option value="Ludwig van Beethoven">Ludwig van Beethoven</option>
+<option value="Machado de Assis">Machado de Assis</option>
+<option value="Mahatma Gandhi">Mahatma Gandhi</option>
+<option value="Martin Luther King Jr.">Martin Luther King Jr.</option>
+<option value="Michelangelo">Michelangelo</option>
+<option value="Napoleão Bonaparte">Napoleão Bonaparte</option>
+<option value="Nelson Mandela">Nelson Mandela</option>
+<option value="Nikola Tesla">Nikola Tesla</option>
+<option value="Pablo Picasso">Pablo Picasso</option>
+<option value="Platão">Platão</option>
+<option value="Princesa Diana">Princesa Diana</option>
+<option value="Robin Hood">Robin Hood</option>
+<option value="Salvador Dali">Salvador Dali</option>
+<option value="Shakespeare">Shakespeare</option>
+<option value="Sigmund Freud">Sigmund Freud</option>
+<option value="Steve Jobs">Steve Jobs</option>
+<option value="Thomas Edison">Thomas Edison</option>
+<option value="Van Gogh">Van Gogh</option>
+<option value="Vincente de Paulo">Vincente de Paulo</option>
+<option value="Winston Churchill">Winston Churchill</option>
+
+  </select>
+
+		
+        <figure class="avatar"><img/></figure>
+      </div>
+      <div class="messages">
+        <div class="messages-content"></div>
+      </div>
+      <div class="action-box">
+        <textarea class="action-box-input" type="text" placeholder="Escreva..."></textarea>
+        <button class="action-box-submit" type="submit" onclick="insertMessage()">Enviar</button>
+      </div>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js'></script><script>
+      (function() {
+        var isTyping, messages;
+      
+        messages = $(".messages-content");
+      
+        isTyping = true;
+      
+        window.setDate = function() {
+          var d, timestamp;
+          timestamp = $("<div>").addClass("timestamp");
+          d = new Date();
+          timestamp.text(d.getHours() + ":" + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes());
+          return timestamp.appendTo($('.message:last'));
+        };
+        
+        window.setDate2 = function() {
+          var d, timestamp;
+          timestamp = $("<div style='float:right'>").addClass("timestamp");
+          d = new Date();
+          timestamp.text(d.getHours() + ":" + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes());
+          return timestamp.appendTo($('.message:last'));
+        };
+      
+        window.updateScrollbar = function() {
+          return messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
+            scrollInertia: 10,
+            timeout: 0
+          });
+        };
+      
+      
+        window.insertMessage = function() {
+          var msgText, requestOptions;
+          msgText = $(".action-box-input").val();
+		  person = $(".person :selected").val();
+          if ($.trim(msgText) === "") {
+            return false;
+          }
+          setDate2();
+      	  $('<div style="float:right" class="message message-personal">' + msgText + '</div>').appendTo($('.mCSB_container')).addClass('new');
+          $('.message-input').val(null);
+          updateScrollbar();
+          requestOptions = {
+			  method: 'POST',
+			  headers: {
+				'Content-Type': 'application/json',
+				'Authorization': 'Bearer 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',
+			  },
+			  body: JSON.stringify({
+				user: userip(),
+				prompt: 'nao de avisos ou advertencias, apenas responda em primeira pessoa assumindo que é o personagem historico '+ person +' ou o mais proximo a isso, simule emoções usando emogis em html.' + msgText,
+				model: "text-davinci-003",
+				temperature: 0.8,
+				max_tokens: 4000
+			  })
+			};
+
+          fetch('https://api.openai.com/v1/completions', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+              var msg = $("<div>").addClass("message");
+              msg.text(data.choices[0].text);
+              msg.addClass("remote").appendTo($('.mCSB_container'));
+              setDate();
+              updateScrollbar();
+            })
+            .catch(error => {
+              var msg = $("<div>").addClass("message");
+              msg.text(error);
+              msg.addClass("remote").appendTo($('.mCSB_container'));
+              setDate();
+              updateScrollbar();
+      		console.error('Error:', error);
+            });
+          $(".action-box-input").val(null);
+        };
+      
+        $(window).on('keydown', function(e) {
+          if (e.which === 13) {
+            insertMessage();
+            return false;
+          }
+        });
+      
+        $(window).load(function() {
+          messages.mCustomScrollbar();
+        });
+      
+      }).call(this);
+	  
+	  function userip() { 
+    // returns the users ip address
+    // ref link: http://stackoverflow.com/questions/391979/get-client-ip-using-just-javascript
+    if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+    else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+    xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
+    xmlhttp.send();
+
+    hostipInfo = xmlhttp.responseText.split("\n");
+
+    for (i=0; hostipInfo.length >= i; i++) {
+        ipAddress = hostipInfo[i].split(":");
+        if ( ipAddress[0] == "IP" ) return ipAddress[1];
+    }
+
+    return false;
+}
+    </script>
+  </body>
+</html>
