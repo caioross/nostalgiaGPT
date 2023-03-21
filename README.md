@@ -1,4 +1,5 @@
 Chat com personalidades históricas
+
 Este é um projeto de chat que permite conversar com personalidades históricas famosas. Você pode selecionar a personalidade com quem gostaria de conversar e enviar mensagens. A personalidade selecionada responderá com citações famosas que combinam com a sua mensagem.
 
 Como usar
