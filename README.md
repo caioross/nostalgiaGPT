@@ -1,3 +1,20 @@
+<p align='center'>
+  <a href="https://github.com/sponsors/caioross"><img alt="Sponsors" src="https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#white" /></a>
+  &nbsp;
+  <a href="#"><img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/caioross/NostalgiaGPT?style=for-the-badge" /></a>
+</p>
+
+<p align='center'>
+  <a href="https://github.com/caioross/NostalgiaGPT/pulse" alt="Activity">
+          <img src="https://img.shields.io/github/commit-activity/m/caioross/NostalgiaGPT" /></a>
+  <a href="https://github.com/caioross/NostalgiaGPT/discussions" alt="Discussions">
+          <img src="https://img.shields.io/github/discussions/caioross/NostalgiaGPT" /></a>
+  <a href="https://github.com/caioross/NostalgiaGPT/actions/workflows/daily-tests.yml">
+          <img src="https://img.shields.io/github/actions/workflow/status/caioross/NostalgiaGPT/run.yml?label=Testes" alt="Daily Tests Status"></a>
+  <a href="https://discord.gg/">
+          <img src="https://img.shields.io/discord/308323056592486420?logo=discord&logoColor=white" alt="Chat on Discord"></a>
+</p>
+
 # nostalgiaGPT: Converse com Personalidades Históricas
 
 ## Descrição
