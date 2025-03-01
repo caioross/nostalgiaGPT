@@ -11,8 +11,6 @@
           <img src="https://img.shields.io/github/discussions/caioross/NostalgiaGPT" /></a>
   <a href="https://github.com/caioross/NostalgiaGPT/actions/workflows/daily-tests.yml">
           <img src="https://img.shields.io/github/actions/workflow/status/caioross/NostalgiaGPT/run.yml?label=Testes" alt="Daily Tests Status"></a>
-  <a href="https://discord.gg/">
-          <img src="https://img.shields.io/discord/308323056592486420?logo=discord&logoColor=white" alt="Chat on Discord"></a>
 </p>
 
 # nostalgiaGPT: Converse com Personalidades Históricas
